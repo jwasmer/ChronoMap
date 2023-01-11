@@ -1,6 +1,8 @@
-import mapboxgl from '!mapbox-gl';
-import React, { useEffect, useRef } from 'react';
+import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import React, { useState, useEffect, useRef } from 'react';
 import './Map.css'
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoiandhc21lciIsImEiOiJjbGNwbjFiNjI3bnBiM3FwOWFyYnZyNmRtIn0.dy0DAO9j8qhnJ-df-xb1Yw' // how to hide this?
 
 export default function Map() {
 
