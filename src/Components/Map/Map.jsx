@@ -15,6 +15,7 @@ export default function Map() {
   // ensures map isn't rendered before the map's container has been created
   useEffect(() => {
     if (map.current) return;
+
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v12',
@@ -23,8 +24,22 @@ export default function Map() {
     })
   })
 
+  // stores new lat/long/zoom values when user interacts with a map
+  useEffect(() => {
+    if (!map.current) return;
+
+    map.current.on('move', () => { // on() method attaches event handlers for the selected elements and child elements
+      setLng(map.current.getCenter().lng.toFixed(4)) // getCenter() returns map geographical centerpoint {lng: 0, lat: 0}
+      setLat(map.current.getCenter().lat.toFixed(4)) // toFixed() defines number of digits following a decimal point, here it's 4 digits (0.0000)
+      setZoom(map.current.getZoom().toFixed(2)) // getZoom() returns the map's current zoom level as a number
+    })
+  })
+
   return (
     <div>
+      <div className='sidebar'>
+        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+      </div>
       <div ref={mapContainer} className="map-container" />
     </div>
   )
