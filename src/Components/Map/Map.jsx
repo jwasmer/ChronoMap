@@ -1,12 +1,14 @@
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import React, { ReactDOM, useState, useEffect, useRef } from 'react';
 import './Map.css'
-import Options from '../Options/Options'
+import { featureCollectionTemplate, featureTemplate, symbolLayer, buildFeature, updateFeatureCollection } from './MapboxHelpers';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoiandhc21lciIsImEiOiJjbGNwbjFiNjI3bnBiM3FwOWFyYnZyNmRtIn0.dy0DAO9j8qhnJ-df-xb1Yw' // how to hide this?
 
 export default function Map() {
   const [coordinates, setCoordinates] = useState([])
+  const [feature, setFeature] = useState(null)
+  const [geoJson, setGeoJson] = useState(featureCollection)
 
   // defines default values for map
   const mapContainer = useRef(null)
@@ -26,6 +28,16 @@ export default function Map() {
       zoom: zoom
     })
 
+    map.current.on('load', () => {
+      map.current.loadImage('.../assets/marker-purple.png', (error, image) => {
+        if (error) throw error
+
+        map.current.addImage('marker', image)
+      })
+
+      map.addSource('points', featureCollectionTemplate)
+      map.current.addLayer(symbolLayer)
+    })
   })
 
   // stores new lat/long/zoom values when user interacts with a map
@@ -40,10 +52,15 @@ export default function Map() {
   })
 
   // creates a single event listener to pull lat/long coordinates from the map on click
-  const getCoordinates = () => {
+  const getCoordinates = async () => {
     map.current.once('click', (event) => {
       setCoordinates(event.lngLat)
     })
+  }
+
+  const saveCoordinates = () => {
+
+    setGeoJson([...geoJson, coordinates])
   }
 
   return (
@@ -51,9 +68,14 @@ export default function Map() {
       <div className='sidebar'>
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
       </div>
+      <button onClick={saveCoordinates}>Save Coordinates</button>
       <div ref={mapContainer} className="map-container" onClick={(event) => {
         getCoordinates(event)
       }}/>
+
     </div>
   )
 }
+
+
+
