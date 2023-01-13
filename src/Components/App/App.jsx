@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './App.css';
-import Map from '../Map/Map'
+import MapUI from '../MapUI/MapUI'
 
 export default function App() {
 
@@ -8,7 +8,7 @@ export default function App() {
 
   return (
     <>
-      <Map />
+      <MapUI />
     </>
   );
 }
