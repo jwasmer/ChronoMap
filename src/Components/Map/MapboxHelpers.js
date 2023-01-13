@@ -33,12 +33,12 @@ export const symbolLayer = {
   }
 }
 
-export const buildFeature = (featureTemplate, coordinates, title) => {
+export const buildFeature = (featureTemplate, coordinates) => {
   const coordinateArray = [coordinates.lat, coordinates.lng]
   const feature = featureTemplate
 
   feature.geometry['coordinates'] = coordinateArray
-  feature.properties = {'title': title}
+  feature.properties = {'title': 'userClick'}
 
   return feature
 }
