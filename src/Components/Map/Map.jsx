@@ -1,7 +1,7 @@
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import React, { ReactDOM, useState, useEffect, useRef } from 'react';
 import './Map.css'
-import { featureCollectionTemplate, featureTemplate, symbolLayer, buildFeature, updateFeatureCollection } from './MapboxHelpers';
+import { featureCollectionTemplate, featureTemplate, symbolLayer, polygonLayer, buildFeature, updateFeatureCollection } from './MapboxHelpers';
 import { reverseGeocode, forwardGeocode, geocodeQuery } from '../../apiCalls/Geocode'
 import { isochroneQuery } from '../../apiCalls/Isochrone';
 
@@ -11,6 +11,7 @@ export default function Map() {
   const [coordinates, setCoordinates] = useState(0)
   const [featureCollection, setFeatureCollection] = useState(featureCollectionTemplate)
   const [marker, setMarker] = useState(null)
+  const [clickPolygon, setClickPolygon] = useState(null)
 
   const mapContainer = useRef(null)
     const map = useRef(null)
@@ -53,8 +54,29 @@ export default function Map() {
 
     if (coordinates) {
       const newMarker = new mapboxgl.Marker()
+
       newMarker.setLngLat([coordinates.lng, coordinates.lat]).addTo(map.current)
+
       setMarker(newMarker)
+
+      const profile = 'driving'
+      const time = '15'
+      const lngLat = `${coordinates.lng},${coordinates.lat}`
+
+      const polygon = isochroneQuery(profile, lngLat, time)
+
+      polygon.then((data) => {
+        const layer = featureCollectionTemplate
+        layer.data = data
+
+        if (map.current.getSource('click')) {
+          map.current.getSource('click').data = data
+        }
+        else {
+          map.current.addSource('click', layer)
+          map.current.addLayer(polygonLayer)
+        }
+      })
     }
   }, [coordinates])
 
@@ -74,7 +96,6 @@ export default function Map() {
       </div>
       <button onClick={saveCoordinates}>Save Coordinates</button>
       <div ref={mapContainer} className="map-container" />
-
     </div>
   )
 }
