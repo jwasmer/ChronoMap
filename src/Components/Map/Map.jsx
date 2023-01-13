@@ -82,23 +82,10 @@ export default function Map() {
     }
   }, [coordinates])
 
-  const saveCoordinates = (featureTemplate, coordinates) => {
-    const features = featureCollection.data.features
-
-    const collection = updateFeatureCollection(featureCollectionTemplate, features, buildFeature(featureTemplate, coordinates))
-
-    setFeatureCollection(collection)
-    console.log(featureCollection)
-  }
-
   return (
-    <div>
-      <div className='sidebar'>
-        Longitude: {coordinates.lng} | Latitude: {coordinates.lat} | Zoom: {zoom}
-      </div>
-      <button onClick={saveCoordinates}>Save Coordinates</button>
+    <>
       <div ref={mapContainer} className="map-container" />
-    </div>
+    </>
   )
 }
 
