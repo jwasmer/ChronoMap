@@ -2,7 +2,7 @@ import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-load
 import React, { ReactDOM, useState, useEffect, useRef } from 'react';
 import './Map.css'
 import { featureCollectionTemplate, featureTemplate, symbolLayer, buildFeature, updateFeatureCollection } from './MapboxHelpers';
-import { reverseGeocode, forwardGeocode, geocodeQuery } from '.../apiCalls/Geocode'
+import { reverseGeocode, forwardGeocode, geocodeQuery } from '../../apiCalls/Geocode'
 import { isochroneQuery } from '../../apiCalls/Isochrone';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoiandhc21lciIsImEiOiJjbGNwbjFiNjI3bnBiM3FwOWFyYnZyNmRtIn0.dy0DAO9j8qhnJ-df-xb1Yw'
