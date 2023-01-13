@@ -60,7 +60,7 @@ export default function Map() {
       setMarker(newMarker)
 
       const profile = 'driving'
-      const time = '15'
+      const time = '60'
       const lngLat = `${coordinates.lng},${coordinates.lat}`
 
       const polygon = isochroneQuery(profile, lngLat, time)
@@ -70,7 +70,9 @@ export default function Map() {
         layer.data = data
 
         if (map.current.getSource('click')) {
-          map.current.getSource('click').data = data
+          map.current.removeLayer('click')
+          map.current.getSource('click').setData(data)          
+          map.current.addLayer(polygonLayer)
         }
         else {
           map.current.addSource('click', layer)
