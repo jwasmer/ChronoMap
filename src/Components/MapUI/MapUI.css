@@ -1,0 +1,11 @@
+.searchbar {
+  height: 80px;
+  width: 400px;
+  border-radius: 0px 0px 15px 15px;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 50vw;
+  background-color: rgb(255, 255, 255);
+  filter: drop-shadow(16px 16px 10px black)
+}
