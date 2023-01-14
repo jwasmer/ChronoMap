@@ -7,9 +7,8 @@ import { isochroneQuery } from '../../apiCalls/Isochrone';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoiandhc21lciIsImEiOiJjbGNwbjFiNjI3bnBiM3FwOWFyYnZyNmRtIn0.dy0DAO9j8qhnJ-df-xb1Yw'
 
-export default function Map({ searchGeoJson }) {
+export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon, profile, time, count }) {
   const [coordinates, setCoordinates] = useState(0)
-  const [featureCollection, setFeatureCollection] = useState(featureCollectionTemplate)
   const [marker, setMarker] = useState(null)
 
   const mapContainer = useRef(null)
@@ -29,7 +28,8 @@ export default function Map({ searchGeoJson }) {
     })
 
     map.current.on('load', () => {
-      map.current.addSource('points', featureCollection)
+      map.current.addSource('saved', featureCollectionTemplate)
+      map.current.addSource('points', featureCollectionTemplate)
       map.current.addLayer(symbolLayer)
     })
 
@@ -53,6 +53,7 @@ export default function Map({ searchGeoJson }) {
         searchGeoJson
           .then((data) => {
             setCoordinates({lng: data.features[0].center[0], lat: data.features[0].center[1]})
+            setSearchGeoJson(null)
           })
       }
   }, [searchGeoJson])
@@ -64,23 +65,25 @@ export default function Map({ searchGeoJson }) {
       const newMarker = new mapboxgl.Marker()
 
       newMarker.setLngLat([coordinates.lng, coordinates.lat]).addTo(map.current)
-
       setMarker(newMarker)
 
-      const profile = 'driving'
-      const time = '60'
       const lngLat = `${coordinates.lng},${coordinates.lat}`
-
       const polygon = isochroneQuery(profile, lngLat, time)
 
       polygon.then((data) => {
         const layer = featureCollectionTemplate
+        data.features[0].properties.profile = profile
+        data.saveKey = count
         layer.data = data
+
+        console.log(data)
 
         if (map.current.getSource('click')) {
           map.current.removeLayer('click')
-          map.current.getSource('click').setData(data)          
+          map.current.getSource('click').setData(data)      
           map.current.addLayer(polygonLayer)
+
+          setCurrentPolygon(data)
         }
         else {
           map.current.addSource('click', layer)
