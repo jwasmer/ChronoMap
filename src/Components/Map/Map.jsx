@@ -7,11 +7,10 @@ import { isochroneQuery } from '../../apiCalls/Isochrone';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoiandhc21lciIsImEiOiJjbGNwbjFiNjI3bnBiM3FwOWFyYnZyNmRtIn0.dy0DAO9j8qhnJ-df-xb1Yw'
 
-export default function Map() {
+export default function Map({ searchGeoJson }) {
   const [coordinates, setCoordinates] = useState(0)
   const [featureCollection, setFeatureCollection] = useState(featureCollectionTemplate)
   const [marker, setMarker] = useState(null)
-  const [clickPolygon, setClickPolygon] = useState(null)
 
   const mapContainer = useRef(null)
     const map = useRef(null)
@@ -50,6 +49,15 @@ export default function Map() {
   })
 
   useEffect(() => {
+    if (searchGeoJson) {
+        searchGeoJson
+          .then((data) => {
+            setCoordinates({lng: data.features[0].center[0], lat: data.features[0].center[1]})
+          })
+      }
+  }, [searchGeoJson])
+
+  useEffect(() => {
     if (marker) marker.remove()
 
     if (coordinates) {
@@ -79,6 +87,10 @@ export default function Map() {
           map.current.addLayer(polygonLayer)
         }
       })
+
+      map.current.flyTo({
+        center: coordinates
+        })
     }
   }, [coordinates])
 
