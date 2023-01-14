@@ -10,10 +10,9 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
-import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
-export default function IconMenu() {
+export default function IconMenu({ setProfile }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selection, setSelection] = useState(<DirectionsCarIcon/>)
   const open = Boolean(anchorEl)
@@ -77,25 +76,28 @@ export default function IconMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={() => setSelection(<DirectionsWalkIcon/>)}>
+        <MenuItem onClick={() => {
+          setSelection(<DirectionsWalkIcon/>)
+          setProfile('walking')
+          }}>
           <ListItemIcon>
             <DirectionsWalkIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText>Walk</ListItemText>
         </MenuItem>
-        <MenuItem onClick={() => {setSelection(<DirectionsBikeIcon/>)}}>
+        <MenuItem onClick={() => {
+          setSelection(<DirectionsBikeIcon/>)
+          setProfile('cycling')
+          }}>
           <ListItemIcon>
             <DirectionsBikeIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText>Bike</ListItemText>
         </MenuItem>
-        <MenuItem onClick={() => {setSelection(<DirectionsSubwayIcon/>)}}>
-          <ListItemIcon>
-            <DirectionsSubwayIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText>Public</ListItemText>
-        </MenuItem>
-        <MenuItem onClick={() => {setSelection(<DirectionsCarIcon/>)}}>
+        <MenuItem onClick={() => {
+          setSelection(<DirectionsCarIcon/>)
+          setProfile('driving')
+          }}>
           <ListItemIcon>
             <DirectionsCarIcon fontSize="small" />
           </ListItemIcon>

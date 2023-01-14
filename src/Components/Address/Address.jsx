@@ -1,7 +1,6 @@
 import { Typography, Paper, Box } from '@mui/material'
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
-import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import Divider from '@mui/material/Divider';
 import Avatar from '@mui/material/Avatar';
@@ -46,11 +45,6 @@ export default function Address() {
       <IconButton>
         <Avatar sx={{width: 48, height: 48}}>
           <DirectionsBikeIcon fontSize='medium'/>
-        </Avatar>
-      </IconButton>
-      <IconButton>
-        <Avatar sx={{width: 48, height: 48}}>
-          <DirectionsSubwayIcon fontSize='medium'/>
         </Avatar>
       </IconButton>
       <IconButton>
