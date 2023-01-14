@@ -49,11 +49,6 @@ export default function Address() {
         </Avatar>
       </IconButton>
       <IconButton>
-        <Avatar sx={{width: 48, height: 48}}>
-          <DirectionsSubwayIcon fontSize='medium'/>
-        </Avatar>
-      </IconButton>
-      <IconButton>
         <Avatar sx={{width: 48, height: 48, bgcolor: '#8e24aa', opacity: '.87'}}>
           <DirectionsCarIcon fontSize='medium'/>
         </Avatar>
