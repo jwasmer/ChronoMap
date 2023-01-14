@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
-import Options from '../Options/Options'
 import Button from '@mui/material/Button';
 import Map from '../Map/Map'
 import './MapUI.css'
@@ -10,7 +9,6 @@ import IconButton from '@mui/material/IconButton';
 import { forwardGeocode, geocodeQuery } from '../../apiCalls/Geocode'
 import TimeMenu from '../Menu/TimeMenu.jsx'
 import IconMenu from '../Menu/IconMenu.jsx'
-import { featureCollectionTemplate } from '../Map/MapboxHelpers';
 
 export default function MapUI() {
   const [searchInput, setSearchInput] = useState('')
