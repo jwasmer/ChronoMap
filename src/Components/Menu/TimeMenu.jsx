@@ -4,14 +4,9 @@ import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
-import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
-import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
-import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
 export default function IconMenu({ setTime }) {
   const [anchorEl, setAnchorEl] = useState(null);
