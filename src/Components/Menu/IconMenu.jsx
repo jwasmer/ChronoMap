@@ -10,7 +10,6 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
-import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
 export default function IconMenu({ setProfile }) {
