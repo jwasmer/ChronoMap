@@ -1,5 +1,5 @@
 export const reverseGeocode = (longitude, latitude) => {
-  const query = `https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json`
+  const query = `https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=pk.eyJ1Ijoiandhc21lciIsImEiOiJjbGNwbjFiNjI3bnBiM3FwOWFyYnZyNmRtIn0.dy0DAO9j8qhnJ-df-xb1Yw`
 
   return query
 }
@@ -7,7 +7,7 @@ export const reverseGeocode = (longitude, latitude) => {
 export const forwardGeocode = (search) => {
   const encodedSearch = encodeURIComponent(search)
 
-  const query = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedSearch}.json`
+  const query = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedSearch}.json?access_token=pk.eyJ1Ijoiandhc21lciIsImEiOiJjbGNwbjFiNjI3bnBiM3FwOWFyYnZyNmRtIn0.dy0DAO9j8qhnJ-df-xb1Yw`
 
   return query
 }
@@ -21,6 +21,7 @@ export const geocodeQuery = async (query) => {
     }
 
     const data = await response.json()
+
     return data
   } 
   catch (error) {

@@ -13,7 +13,6 @@ export const featureTemplate = {
     'coordinates': []
   },
   'properties': {
-    // 'title': 'Mapbox DC'
   }
 }
 
@@ -43,25 +42,6 @@ export const polygonLayer = {
     'fill-opacity': 0.5
   }
 }
-
-// export const buildIsochrone = (coordinates, isochroneQuery, profile, time) => {
-//   const selectedProfile = profile || 'driving'
-//   const lngLat = `${coordinates.lng},${coordinates.lat}`
-//   const selectedTime = time || '60'
-
-//   const polygon = isochroneQuery(profile, lngLat, time)
-//   polygon.then((data) => {
-//     const layer = featureCollectionTemplate
-//     layer.data = data
-//     if (map.current.getSource('click')) {
-//       map.current.getSource('click').data = data
-//     }
-//     else {
-//       map.current.addSource('click', layer)
-//       map.current.addLayer(polygonLayer)
-//     }
-//   })
-// }
 
 export const buildFeature = (featureTemplate, coordinates) => {
   const coordinateArray = [coordinates.lat, coordinates.lng]
