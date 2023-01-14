@@ -26,29 +26,37 @@ export default function Address() {
       </Typography>
       <Divider orientation='vertical' variant="middle" sx={{ml: '24px', mr: '24px'}} flexItem/>
       <IconButton>
-        <Avatar sx={{bgcolor: '#000000', opacity: '.87'}}>15m</Avatar>
+        <Avatar sx={{width: 48, height: 48, bgcolor: '#8e24aa', opacity: '.87'}}>15m</Avatar>
       </IconButton>
       <IconButton>
-        <Avatar>30m</Avatar>
+        <Avatar sx={{width: 48, height: 48}}>30m</Avatar>
       </IconButton>
       <IconButton>
-        <Avatar>45m</Avatar>
+        <Avatar sx={{width: 48, height: 48}}>45m</Avatar>
       </IconButton>
       <IconButton>
-        <Avatar color='primary'>60m</Avatar>
+        <Avatar sx={{width: 48, height: 48}}>60m</Avatar>
       </IconButton>
       <Divider orientation='vertical' variant="middle" sx={{ml: '24px', mr: '24px'}} flexItem/>
       <IconButton className='icon__button'>
-        <DirectionsWalkIcon className='icon' color='disabled' fontSize='large'/>
+        <Avatar sx={{width: 48, height: 48}}>
+          <DirectionsWalkIcon fontSize='medium'/>
+        </Avatar>      
       </IconButton>
       <IconButton>
-        <DirectionsBikeIcon className='icon' color='disabled' fontSize='large' />
+        <Avatar sx={{width: 48, height: 48}}>
+          <DirectionsBikeIcon fontSize='medium'/>
+        </Avatar>
       </IconButton>
       <IconButton>
-        <DirectionsSubwayIcon className='icon' color='disabled' fontSize='large' />
+        <Avatar sx={{width: 48, height: 48}}>
+          <DirectionsSubwayIcon fontSize='medium'/>
+        </Avatar>
       </IconButton>
       <IconButton>
-        <DirectionsCarIcon className='icon' fontSize='large' sx={{color: '#000000', opacity: '.87'}}/>
+        <Avatar sx={{width: 48, height: 48, bgcolor: '#8e24aa', opacity: '.87'}}>
+          <DirectionsCarIcon fontSize='medium'/>
+        </Avatar>
       </IconButton>
       <Divider orientation='vertical' variant="middle" sx={{ml: '24px', mr: '12px'}} flexItem/>
       <IconButton sx={{
