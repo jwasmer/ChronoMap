@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
+import Options from '../Options/Options'
 import Button from '@mui/material/Button';
 import Map from '../Map/Map'
 import './MapUI.css'
@@ -14,7 +16,7 @@ export default function MapUI() {
   const [searchGeoJson, setSearchGeoJson] = useState(null)
   const [time, setTime] = useState('60')
   const [profile, setProfile] = useState('car')
-
+  
   return (
     <main>
       <Map searchGeoJson={ searchGeoJson }/>
@@ -31,7 +33,7 @@ export default function MapUI() {
       <IconMenu />
       <TimeMenu />
       <div className='button-container'>
-        <Button variant="contained" size='large'>VIEW SAVED</Button>
+        <Button variant="contained" size='large' component={Link} to='/options'>VIEW SAVED</Button>
       </div>
     </main>
   )

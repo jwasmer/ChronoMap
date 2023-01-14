@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { Route, Routes } from 'react-router'
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import MapUI from '../MapUI/MapUI'
+import Options from '../Options/Options'
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@emotion/react';
 
@@ -25,7 +28,12 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <MapUI />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<MapUI />} />
+          <Route path='/options/' element={<Options />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
