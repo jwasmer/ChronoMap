@@ -13,9 +13,9 @@ import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
-export default function IconMenu() {
+export default function IconMenu({ setTime }) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [time, setTime] = useState('60m')
+  const [time, setTimeIcon] = useState('60m')
   const open = Boolean(anchorEl)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -75,16 +75,28 @@ export default function IconMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={() => setTime('15m')}>
+        <MenuItem onClick={() => {
+          setTimeIcon('15m')
+          setTime(15)
+          }}>
           <ListItemText>15 minutes</ListItemText>
         </MenuItem>
-        <MenuItem onClick={() => setTime('30m')}>
+        <MenuItem onClick={() => {
+          setTimeIcon('30m')
+          setTime(30)
+          }}>
           <ListItemText>30 minutes</ListItemText>
         </MenuItem>
-        <MenuItem onClick={() => setTime('45m')}>
+        <MenuItem onClick={() => {
+          setTimeIcon('45m')
+          setTime(45)
+          }}>
           <ListItemText>45 minutes</ListItemText>
         </MenuItem>
-        <MenuItem onClick={() => setTime('60m')}>
+        <MenuItem onClick={() => {
+          setTimeIcon('60m')
+          setTime(60)
+          }}>
           <ListItemText>60 minutes</ListItemText>
         </MenuItem>
       </Menu>
