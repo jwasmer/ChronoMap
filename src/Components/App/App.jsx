@@ -30,8 +30,8 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<MapUI />} />
-          <Route path='/options/' element={<Options />} />
+          <Route path='/map/*' element={<MapUI />} />
+          <Route path='/options/*' element={<Options />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
