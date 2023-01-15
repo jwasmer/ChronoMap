@@ -29,10 +29,7 @@ export default function MapUI() {
     address.then((data) => {
       polyForUpdate.foreign.address = data.features[0].place_name;
 
-      setSavedAddresses([...savedAddresses, polyForUpdate])
-
-      console.log('polyForUpdate:', polyForUpdate)
-      console.log('savedAddresses', savedAddresses)
+      setSavedAddresses((prevState) => [...prevState, polyForUpdate], console.log(savedAddresses))
     })
   }
 
