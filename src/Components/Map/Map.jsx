@@ -69,25 +69,31 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
       const lngLat = `${coordinates.lng},${coordinates.lat}`
       const polygon = isochroneQuery(profile, lngLat, time)
 
+      console.log('isochrone response:', polygon)
+
       polygon.then((data) => {
         const layer = featureCollectionTemplate
-        data.features[0].properties.profile = profile
-        data.saveKey = count
-        layer.data = data
 
-        console.log(data)
+        data.foreign = {}
+        data.foreign.profile = profile
+        data.foreign.saveKey = count
+        data.foreign.lngLat = lngLat
+        
+        console.log(profile, data)
+
+        layer.data = data
 
         if (map.current.getSource('click')) {
           map.current.removeLayer('click')
           map.current.getSource('click').setData(data)      
           map.current.addLayer(polygonLayer)
-
-          setCurrentPolygon(data)
         }
         else {
           map.current.addSource('click', layer)
           map.current.addLayer(polygonLayer)
         }
+
+        setCurrentPolygon(data)
       })
 
       map.current.flyTo({
