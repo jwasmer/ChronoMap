@@ -19,9 +19,7 @@ export default function Address({ saveData, setSaveData }) {
       <VisibilityIcon color='primary' fontSize='large' />
     </IconButton>
     <Divider orientation='vertical' variant="middle" sx={{ml: '12px', mr: '24px'}} flexItem/>
-    <Typography noWrap={true} variant='body1' className='address-text' sx={{ 
-      width: '300px'
-    }}>
+    <Typography noWrap={true} variant='body1' className='address-text'> 
       21 Foote Street, Pawcatuck, Connecticut 06379
     </Typography>
     <Divider orientation='vertical' variant="middle" sx={{ml: '24px', mr: '24px'}} flexItem/>
