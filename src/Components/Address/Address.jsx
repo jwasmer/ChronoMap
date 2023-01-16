@@ -1,63 +1,43 @@
-import { Typography, Paper, Box } from '@mui/material'
-import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
-import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
-import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import React from 'react';
+import { Typography, Paper, Radio, FormControl, FormLabel, RadioGroup, FormControlLabel } from '@mui/material'
 import Divider from '@mui/material/Divider';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import ProfileButtons from './ProfileButtons';
+import TimeButtons from './TimeButtons';
 
-export default function Address() {
+export default function Address({ saveData, setSaveData }) {
+  console.log(saveData)
+
   return (
-    <Paper className='paper' elevation={2} overflow='scroll'>
-      <IconButton sx={{
-        ml: '12px'
-      }}>
-        <VisibilityIcon color='primary' fontSize='large' />
-      </IconButton>
-      <Divider orientation='vertical' variant="middle" sx={{ml: '12px', mr: '24px'}} flexItem/>
-      <Typography variant='body1' className='address-text' sx={{
-        ml: '24px'
-      }}>
-        21 Foote Street, Pawcatuck, Connecticut 06379
-      </Typography>
-      <Divider orientation='vertical' variant="middle" sx={{ml: '24px', mr: '24px'}} flexItem/>
-      <IconButton>
-        <Avatar sx={{width: 48, height: 48, bgcolor: '#8e24aa', opacity: '.87'}}>15m</Avatar>
-      </IconButton>
-      <IconButton>
-        <Avatar sx={{width: 48, height: 48}}>30m</Avatar>
-      </IconButton>
-      <IconButton>
-        <Avatar sx={{width: 48, height: 48}}>45m</Avatar>
-      </IconButton>
-      <IconButton>
-        <Avatar sx={{width: 48, height: 48}}>60m</Avatar>
-      </IconButton>
-      <Divider orientation='vertical' variant="middle" sx={{ml: '24px', mr: '24px'}} flexItem/>
-      <IconButton className='icon__button'>
-        <Avatar sx={{width: 48, height: 48}}>
-          <DirectionsWalkIcon fontSize='medium'/>
-        </Avatar>      
-      </IconButton>
-      <IconButton>
-        <Avatar sx={{width: 48, height: 48}}>
-          <DirectionsBikeIcon fontSize='medium'/>
-        </Avatar>
-      </IconButton>
-      <IconButton>
-        <Avatar sx={{width: 48, height: 48, bgcolor: '#8e24aa', opacity: '.87'}}>
-          <DirectionsCarIcon fontSize='medium'/>
-        </Avatar>
-      </IconButton>
-      <Divider orientation='vertical' variant="middle" sx={{ml: '24px', mr: '12px'}} flexItem/>
-      <IconButton sx={{
-        mr: '12px'
-      }}>
-        <DeleteIcon color='secondary' fontSize='large' />
-      </IconButton>
-    </Paper>
+  <Paper className='paper' elevation={2} overflow='scroll'>
+    <IconButton sx={{
+      ml: '12px'
+    }}>
+      <VisibilityIcon color='primary' fontSize='large' />
+    </IconButton>
+    <Divider orientation='vertical' variant="middle" sx={{ml: '12px', mr: '24px'}} flexItem/>
+    <Typography noWrap={true} variant='body1' className='address-text' sx={{ 
+      width: '300px'
+    }}>
+      21 Foote Street, Pawcatuck, Connecticut 06379
+    </Typography>
+    <Divider orientation='vertical' variant="middle" sx={{ml: '24px', mr: '24px'}} flexItem/>
+    <TimeButtons
+      saveData={ saveData }
+      setSaveData={ setSaveData }/>
+    <Divider orientation='vertical' variant="middle" sx={{ml: '24px', mr: '24px'}} flexItem/>
+    <ProfileButtons 
+      saveData={ saveData }
+      setSaveData={ setSaveData }/>
+    <Divider orientation='vertical' variant="middle" sx={{ml: '24px', mr: '12px'}} flexItem/>
+    <IconButton sx={{
+      mr: '12px'
+    }}>
+      <DeleteIcon color='secondary' fontSize='large' />
+    </IconButton>
+  </Paper>
   )
 }
