@@ -33,9 +33,8 @@ export default function TimeButtons({ saveData, setSaveData }) {
       <FormControl>
         <RadioGroup
           row
-          defaultValue="60"
           value={value}
-          name="profile-selection-buttons"
+          name="time-selection-buttons"
           onChange={handleChange}
         >
           <FormControlLabel 
