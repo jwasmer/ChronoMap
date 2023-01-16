@@ -79,6 +79,7 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
         data.foreign.saveKey = count
         data.foreign.lngLat = lngLat
         data.foreign.time = time
+        data.foreign.hidden = false
         
         console.log(profile, data)
 
