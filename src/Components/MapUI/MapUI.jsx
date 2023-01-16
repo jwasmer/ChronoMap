@@ -10,12 +10,11 @@ import { reverseGeocode, forwardGeocode, geocodeQuery } from '../../apiCalls/Geo
 import TimeMenu from '../Menu/TimeMenu.jsx'
 import IconMenu from '../Menu/IconMenu.jsx'
 
-export default function MapUI() {
+export default function MapUI({ saveData, setSaveData }) {
   const [searchInput, setSearchInput] = useState('')
   const [searchGeoJson, setSearchGeoJson] = useState(null)
   const [time, setTime] = useState('60')
-  const [profile, setProfile] = useState('driving')
-  const [saveData, setSaveData] = useState([])
+  const [profile, setProfile] = useState("driving")
   const [currentPolygon, setCurrentPolygon] = useState(null)
   const [count, setCount] = useState(1)
 
@@ -91,7 +90,7 @@ export default function MapUI() {
         <Button 
           variant="contained" 
           size='large'
-          component={Link} to='/options'
+          component={Link} to='/map/options/'
         >
           VIEW SAVED
         </Button>
