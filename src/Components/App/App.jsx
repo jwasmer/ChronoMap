@@ -32,7 +32,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/map/*' element={<MapUI saveData={ saveData} setSaveData={ setSaveData }/>} />
-          <Route path='/options/*' element={<Options />} />
+          <Route path='/map/options/*' element={<Options saveData={ saveData} setSaveData={ setSaveData }/>} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
