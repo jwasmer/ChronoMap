@@ -2,16 +2,9 @@ import './Options.css'
 import { Button, Typography } from '@mui/material';
 import { Link, Routes, Route } from 'react-router-dom';
 import Address from '../Address/Address';
-import { useLocation } from 'react-router-dom';
 
-export default function Options() {
-  const location = useLocation()
-  const savedAddresses = location.savedAddresses
-  const setSavedAddresses = location.setSavedAddresses
+export default function Options({ saveData, setSaveData }) {
 
-  console.log(location)
-
-  console.log(savedAddresses)
 
   return(
     <div className='background'>
@@ -23,8 +16,8 @@ export default function Options() {
       </div>
       {}
       <Address 
-        // setSavedAddresses={ setSavedAddresses }
-        // savedAddresses={ savedAddresses }
+        saveData={ saveData }
+        setSaveData={ setSaveData }
       />
     </div>
   )

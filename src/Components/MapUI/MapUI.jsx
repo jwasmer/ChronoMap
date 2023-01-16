@@ -15,11 +15,11 @@ export default function MapUI() {
   const [searchGeoJson, setSearchGeoJson] = useState(null)
   const [time, setTime] = useState('60')
   const [profile, setProfile] = useState('driving')
-  const [savedAddresses, setSavedAddresses] = useState([])
+  const [saveData, setSaveData] = useState([])
   const [currentPolygon, setCurrentPolygon] = useState(null)
   const [count, setCount] = useState(1)
 
-  const saveCurrentPolygon = (currentPolygon, count, geocodeQuery, reverseGeocode, savedAddresses) => {
+  const saveCurrentPolygon = (currentPolygon, count, geocodeQuery, reverseGeocode) => {
     setCount(count + 1)
     
     let polyForUpdate = currentPolygon
@@ -29,13 +29,13 @@ export default function MapUI() {
     address.then((data) => {
       polyForUpdate.foreign.address = data.features[0].place_name;
 
-      setSavedAddresses((prevState) => [...prevState, polyForUpdate])
+      setSaveData((prevState) => [...prevState, polyForUpdate])
     })
   }
 
   useEffect(() => {
-    console.log(savedAddresses)
-  }, [savedAddresses])
+    console.log('saveData from MapUI useEffect:', saveData)
+  }, [saveData])
 
   return (
     <main>
@@ -75,7 +75,7 @@ export default function MapUI() {
           aria-label="search picture" 
           component="label" 
           onClick={() => {
-            saveCurrentPolygon(currentPolygon, count, geocodeQuery, reverseGeocode, savedAddresses)
+            saveCurrentPolygon(currentPolygon, count, geocodeQuery, reverseGeocode)
           }}
         >
           <FavoriteTwoToneIcon />
@@ -92,7 +92,6 @@ export default function MapUI() {
           variant="contained" 
           size='large'
           component={Link} to='/options'
-          state={{ setSavedAddresses, savedAddresses }}
         >
           VIEW SAVED
         </Button>
