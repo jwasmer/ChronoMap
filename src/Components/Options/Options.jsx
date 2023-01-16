@@ -4,7 +4,7 @@ import { Link, Routes, Route } from 'react-router-dom';
 import Address from '../Address/Address';
 
 export default function Options({ saveData, setSaveData }) {
-
+  console.log('saveData from Options:', saveData)
 
   return(
     <div className='background'>
