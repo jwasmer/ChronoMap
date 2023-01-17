@@ -1,10 +1,25 @@
 import './Options.css'
-import { Button, Typography } from '@mui/material';
-import { Link, Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import { Button, Typography, Paper } from '@mui/material';
+import { Link } from 'react-router-dom';
 import Address from '../Address/Address';
 
 export default function Options({ saveData, setSaveData }) {
-  console.log('saveData from Options:', saveData)
+  console.log('Options rendered.')
+
+  const renderAddresses = (saveData) => {
+    return saveData.map(save => {
+      return (
+        <Address 
+          key={save.foreign.saveKey}
+          saveKey={ save.foreign.saveKey }
+          save={ save }
+          saveData={ saveData }
+          setSaveData={ setSaveData }
+        />
+      )
+    })
+  }
 
   return(
     <div className='background'>
@@ -14,11 +29,14 @@ export default function Options({ saveData, setSaveData }) {
           <Button variant="contained" size='large' component={Link} to='/map/'>VIEW MAP</Button>
         </div>
       </div>
-      {}
-      <Address 
-        saveData={ saveData }
-        setSaveData={ setSaveData }
-      />
+      {saveData.length ? renderAddresses(saveData) : 
+      <Paper elevation={0} 
+        sx={{
+          mt: '48px'
+        }}>
+          <Typography variant='h5'>No saved addresses.</Typography>
+        </Paper>
+      }
     </div>
   )
 }
