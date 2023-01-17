@@ -18,7 +18,7 @@ export default function MapUI({ saveData, setSaveData }) {
   const [currentPolygon, setCurrentPolygon] = useState(null)
   const [count, setCount] = useState(1)
 
-  const saveCurrentPolygon = (currentPolygon, geocodeQuery, reverseGeocode) => {
+  const saveCurrentPolygon = (currentPolygon, count, geocodeQuery, reverseGeocode) => {
     setCount((prevState) => {
       return prevState + 1
     })
