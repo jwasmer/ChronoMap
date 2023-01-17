@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Switch } from "@mui/material";
-import { VisibilityOff, Visibility } from '@mui/icons-material';
+import { VisibilityOff, Visibility } from "@mui/icons-material";
 
 export default function VisibilityToggle({ save, setSaveData }) {
   const [checked, setChecked] = useState(save.foreign.visibility)
@@ -37,9 +37,9 @@ export default function VisibilityToggle({ save, setSaveData }) {
       <Switch 
         checked={checked}
         onChange={handleChange}
-        inputProps={{ 'aria-label': 'controlled' }}
+        inputProps={{ "aria-label": "controlled" }}
         checkedIcon={<Visibility />}
-        icon={<VisibilityOff sx={{color: 'secondary.dark'}} />}
+        icon={<VisibilityOff sx={{color: "secondary.dark"}} />}
       />
     </>
   )

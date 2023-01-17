@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Radio, FormControl, RadioGroup, FormControlLabel, Avatar } from '@mui/material'
-import '../Options/Options.css'
+import { Radio, FormControl, RadioGroup, FormControlLabel, Avatar } from "@mui/material"
+import "../Options/Options.css"
 
 export default function TimeButtons({ save, setSaveData }) {
   const [value, setValue] = useState(save.foreign.time)
@@ -41,53 +41,53 @@ export default function TimeButtons({ save, setSaveData }) {
           name="time-selection-buttons"
           onChange={handleChange}
           sx={{
-            display: 'flex',
-            flexWrap: 'nowrap',
-            justifyContent: 'center',
-            width: 'auto',
+            display: "flex",
+            flexWrap: "nowrap",
+            justifyContent: "center",
+            width: "auto",
           }}
         >
           <FormControlLabel 
             value={15}
-            sx={{m: '0'}}
+            sx={{m: "0"}}
             control={
               <Radio 
                 size="large" 
                 icon={<Avatar sx={{width: 48, height: 48}}> 15m </Avatar>} 
-                checkedIcon={<Avatar sx={{width: 48, height: 48, color: 'white', bgcolor: 'primary.main'}}> 15m </Avatar>} 
+                checkedIcon={<Avatar sx={{width: 48, height: 48, color: "white", bgcolor: "primary.main"}}> 15m </Avatar>} 
               />
             } 
           />
           <FormControlLabel 
             value={30}
-            sx={{m: '0'}}
+            sx={{m: "0"}}
             control={
               <Radio 
                 size="large" 
                 icon={<Avatar sx={{width: 48, height: 48}}> 30m </Avatar>} 
-                checkedIcon={<Avatar sx={{width: 48, height: 48, bgcolor: '#8e24aa'}}> 30m </Avatar>} 
+                checkedIcon={<Avatar sx={{width: 48, height: 48, bgcolor: "#8e24aa"}}> 30m </Avatar>} 
               />
             } 
           />          
           <FormControlLabel 
             value={45}
-            sx={{m: '0'}}
+            sx={{m: "0"}}
             control={
               <Radio 
                 size="large" 
                 icon={<Avatar sx={{width: 48, height: 48}}> 45m </Avatar>} 
-                checkedIcon={<Avatar sx={{width: 48, height: 48, bgcolor: '#8e24aa'}}> 45m </Avatar>} 
+                checkedIcon={<Avatar sx={{width: 48, height: 48, bgcolor: "#8e24aa"}}> 45m </Avatar>} 
               />
             } 
           />          
           <FormControlLabel 
             value={60}
-            sx={{m: '0'}}
+            sx={{m: "0"}}
             control={
               <Radio 
                 size="large" 
                 icon={<Avatar sx={{width: 48, height: 48}}> 60m </Avatar>} 
-                checkedIcon={<Avatar sx={{width: 48, height: 48, bgcolor: '#8e24aa'}}> 60m </Avatar>} 
+                checkedIcon={<Avatar sx={{width: 48, height: 48, bgcolor: "#8e24aa"}}> 60m </Avatar>} 
               />
             } 
           />          
