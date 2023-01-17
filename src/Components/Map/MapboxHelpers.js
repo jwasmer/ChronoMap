@@ -44,12 +44,12 @@ export const polygonLayer = {
 }
 
 export const savedPolygonLayer = {
-  'id': 'click',
+  'id': 'saved',
   'type': 'fill',
-  'source': 'click',
+  'source': 'saved',
   'layout': {},
   'paint': {
-    'fill-color': '#0080ff',
+    'fill-color': '##f6ff00',
     'fill-opacity': 0.5
   }
 }

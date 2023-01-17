@@ -23,7 +23,7 @@ export default function MapUI({ saveData, setSaveData }) {
       return prevState + 1
     })
 
-    const address = geocodeQuery(reverseGeocode(currentPolygon.foreign.lngLat))
+    const address = geocodeQuery(reverseGeocode(currentPolygon.foreign.lng, currentPolygon.foreign.lat))
 
     address.then((data) => {
       let newPolygon = currentPolygon
@@ -43,6 +43,7 @@ export default function MapUI({ saveData, setSaveData }) {
         time={ time } 
         currentPolygon={ currentPolygon }
         count={ count }
+        saveData={ saveData }
       />
       <form className='searchbar'>
         <input 

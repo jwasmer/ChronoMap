@@ -75,19 +75,20 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
         data.foreign = {}
         data.foreign.profile = profile
         data.foreign.saveKey = count
-        data.foreign.lngLat = lngLat
+        data.foreign.lng = coordinates.lng
+        data.foreign.lat = coordinates.lat
         data.foreign.time = time
         data.foreign.visibility = true
 
         layer.data = data
 
-        if (map.current.getSource('click')) {
-          map.current.removeLayer('click')
-          map.current.getSource('click').setData(data)      
+        if (map.current.getSource('saved')) {
+          map.current.removeLayer('saved')
+          map.current.getSource('saved').setData(data)      
           map.current.addLayer(polygonLayer)
         }
         else {
-          map.current.addSource('click', layer)
+          map.current.addSource('saved', layer)
           map.current.addLayer(polygonLayer)
         }
 
@@ -103,33 +104,38 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
     }
   }, [coordinates])
 
-  // useEffect(() => {
-  //   if (!map.current || !saveData || !saveData.length ) return;
+  useEffect(() => {
+    if (!map.current || !saveData.length ) return
 
-  //   const addSavedIsochrones = () => {
-  //     saveData.forEach(element => {
-  //       const savedMarker = mapboxgl.Marker()
+    console.log('useEffect fired')
+    console.log('useEffect saveData:', saveData)
+
+    const addSavedIsochrones = () => {
+      saveData.forEach(element => {
+        const savedMarker = new mapboxgl.Marker()
+
+        console.log('element:', element)
     
-  //       savedMarker.setLngLat([element.foreign.lng, element.foreign.lat]).addTo(map.current)
-  //       setMarker(savedMarker)
-  //     })
+        savedMarker.setLngLat([element.foreign.lng, element.foreign.lat]).addTo(map.current)
+        setMarker(savedMarker)
+      })
       
-  //     console.log('thing', featureCollectionTemplate.saveData = saveData)
-  //     return featureCollectionTemplate.saveData = saveData
-  //   }
+      console.log('thing', featureCollectionTemplate.saveData = saveData)
+      return featureCollectionTemplate.saveData = saveData
+    }
 
-  //   map.current.on('data', () => {
-  //     if (saveData && map.current.getSource('saved')) {
-  //       map.current.removeLayer('saved')
-  //       map.current.getSource('saved').setData(addSavedIsochrones())      
-  //       map.current.addLayer(savedPolygonLayer)
-  //     }
-  //     else {
-  //       map.current.addSource('saved', addSavedIsochrones())
-  //       map.addLayer(savedPolygonLayer)
-  //     }
-  //   })
-  // }, [saveData])
+    if (saveData && map.current.getSource('saved')) {
+      console.log('saveData && mapSource fired')
+      map.current.removeLayer('saved')
+      map.current.getSource('saved').setData(addSavedIsochrones())      
+      map.current.addLayer(savedPolygonLayer)
+    }
+    else {
+      console.log('else fired')
+      map.current.addSource('saved', addSavedIsochrones())
+      map.addLayer(savedPolygonLayer)
+    }
+  }, [saveData])
 
   return (
     <>

@@ -28,6 +28,7 @@ export default function App() {
   const [saveData, setSaveData] = useState([])
   
   console.log('App saveData:', saveData)
+  console.log('SaveData length:', saveData.length)
 
   return (
     <ThemeProvider theme={theme}>
