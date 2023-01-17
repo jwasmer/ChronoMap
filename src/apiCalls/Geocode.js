@@ -1,5 +1,5 @@
-export const reverseGeocode = (lngLat) => {
-  const query = `https://api.mapbox.com/geocoding/v5/mapbox.places/${lngLat}.json?access_token=pk.eyJ1Ijoiandhc21lciIsImEiOiJjbGNwbjFiNjI3bnBiM3FwOWFyYnZyNmRtIn0.dy0DAO9j8qhnJ-df-xb1Yw`
+export const reverseGeocode = (lng, lat) => {
+  const query = `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=pk.eyJ1Ijoiandhc21lciIsImEiOiJjbGNwbjFiNjI3bnBiM3FwOWFyYnZyNmRtIn0.dy0DAO9j8qhnJ-df-xb1Yw`
 
   return query
 }
