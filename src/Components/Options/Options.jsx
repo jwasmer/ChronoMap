@@ -13,7 +13,7 @@ export default function Options({ saveData, setSaveData }) {
         <Address 
           key={save.foreign.saveKey}
           save={ save }
-          saveData={ saveData }
+          setSaveData={ setSaveData }
         />
       )
     })
