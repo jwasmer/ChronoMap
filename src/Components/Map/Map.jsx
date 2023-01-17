@@ -69,8 +69,6 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
       const lngLat = `${coordinates.lng},${coordinates.lat}`
       const polygon = isochroneQuery(profile, lngLat, time)
 
-      console.log('isochrone response:', polygon)
-
       polygon.then((data) => {
         const layer = featureCollectionTemplate
 
@@ -80,8 +78,6 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
         data.foreign.lngLat = lngLat
         data.foreign.time = time
         data.foreign.hidden = false
-        
-        console.log(profile, data)
 
         layer.data = data
 
@@ -95,6 +91,9 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
           map.current.addLayer(polygonLayer)
         }
 
+        return data
+      })
+      .then((data) => {
         setCurrentPolygon(data)
       })
 

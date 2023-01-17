@@ -26,13 +26,15 @@ const theme = createTheme({
 
 export default function App() {
   const [saveData, setSaveData] = useState([])
+  
+  console.log('App saveData:', saveData)
 
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path='/map/*' element={<MapUI saveData={ saveData} setSaveData={ setSaveData }/>} />
-          <Route path='/map/options/*' element={<Options saveData={ saveData} setSaveData={ setSaveData }/>} />
+          <Route path='/map/*' element={<MapUI saveData={ saveData } setSaveData={ setSaveData }/>} />
+          <Route path='/map/options/*' element={<Options saveData={ saveData } setSaveData={ setSaveData }/>} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
