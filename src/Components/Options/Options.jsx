@@ -12,10 +12,8 @@ export default function Options({ saveData, setSaveData }) {
       return (
         <Address 
           key={save.foreign.saveKey}
-          saveKey={ save.foreign.saveKey }
           save={ save }
           saveData={ saveData }
-          setSaveData={ setSaveData }
         />
       )
     })
