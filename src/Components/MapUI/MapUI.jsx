@@ -18,23 +18,20 @@ export default function MapUI({ saveData, setSaveData }) {
   const [currentPolygon, setCurrentPolygon] = useState(null)
   const [count, setCount] = useState(1)
 
-  const saveCurrentPolygon = (currentPolygon, count, geocodeQuery, reverseGeocode) => {
-    setCount(count + 1)
-    
-    let polyForUpdate = currentPolygon
+  const saveCurrentPolygon = (currentPolygon, geocodeQuery, reverseGeocode) => {
+    setCount((prevState) => {
+      return prevState + 1
+    })
 
     const address = geocodeQuery(reverseGeocode(currentPolygon.foreign.lngLat))
 
     address.then((data) => {
-      polyForUpdate.foreign.address = data.features[0].place_name;
+      let newPolygon = currentPolygon
+      newPolygon.foreign.address = data.features[0].place_name;
 
-      setSaveData((prevState) => [...prevState, polyForUpdate])
+      setSaveData((prevState) => [...prevState, newPolygon])
     })
   }
-
-  useEffect(() => {
-    console.log('saveData from MapUI useEffect:', saveData)
-  }, [saveData])
 
   return (
     <main>
