@@ -3,28 +3,34 @@ import { Radio, FormControl, RadioGroup, FormControlLabel, Avatar } from '@mui/m
 import { DirectionsWalk, DirectionsBike, DirectionsCar } from "@mui/icons-material";
 import '../Options/Options.css'
 
-export default function ProfileButtons({ saveData, setSaveData }) {
-  console.log('ProfileButton saveData:', saveData[0])
-  const [value, setValue] = useState(saveData[0].foreign.profile)
+export default function ProfileButtons({ save, setSaveData }) {
+  const [value, setValue] = useState(save.foreign.profile)
 
   const handleChange = (event) => {
     setValue(event.target.value)
   }
 
   useEffect(() => {
-    console.log('value:', value)
-    setSaveData((prevState) => {
-      return {
-      ...prevState,
-        [0]: {
-          ...prevState[0],
-            foreign: {
-              ...prevState[0].foreign,
-                profile: value
+    if (value !== save.foreign.profile) {
+      setSaveData((prevState) => {
+        let arr = [...prevState]
+
+        return arr.map((element) => {
+          if (element.foreign.saveKey === save.foreign.saveKey) {
+            return {
+              ...element,
+                foreign: {
+                  ...element.foreign,
+                    profile: value
+                }
+            }
           }
-        }
-      }
-    })
+          else {
+            return element
+          }
+        })
+      })
+    }
   }, [value])
   
   return (
