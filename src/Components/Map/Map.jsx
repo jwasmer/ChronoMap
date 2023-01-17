@@ -52,7 +52,7 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
     if (searchGeoJson) {
         searchGeoJson
           .then((data) => {
-            console.log(JSON.stringify(data))
+            
             setCoordinates({lng: data.features[0].center[0], lat: data.features[0].center[1]})
             setSearchGeoJson(null)
           })
@@ -107,7 +107,7 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
   }, [coordinates])
 
   useEffect(() => {
-    console.log(map.current)
+  
       if (!saveData.length) return
   
       mapId.forEach(id => {
