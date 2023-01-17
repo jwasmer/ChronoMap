@@ -2,30 +2,34 @@ import { useState, useEffect } from "react";
 import { Radio, FormControl, RadioGroup, FormControlLabel, Avatar } from '@mui/material'
 import '../Options/Options.css'
 
-export default function TimeButtons({ saveData, setSaveData }) {
-  console.log('TimeButton saveData:', saveData[0])
-  const [value, setValue] = useState(60)
-  // saveData[0].foreign.time
-
+export default function TimeButtons({ save, setSaveData }) {
+  const [value, setValue] = useState(save.foreign.time)
 
   const handleChange = (event) => {
     setValue(event.target.value)
   }
 
   useEffect(() => {
-    console.log('value:', value)
-    setSaveData((prevState) => {
-      return {
-      ...prevState,
-        [0]: {
-          ...prevState[0],
-            foreign: {
-              ...prevState[0].foreign,
-                time: value
+    if (value !== save.foreign.time) {
+      setSaveData((prevState) => {
+        let arr = [...prevState]
+
+        return arr.map((element) => {
+          if (element.foreign.saveKey === save.foreign.saveKey) {
+            return {
+              ...element,
+                foreign: {
+                  ...element.foreign,
+                    time: value
+                }
+            }
           }
-        }
-      }
-    })
+          else {
+            return element
+          }
+        })
+      })
+    }
   }, [value])
 
   return (
