@@ -1,12 +1,12 @@
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import React, { useState, useEffect, useRef } from 'react';
 import './Map.css'
-import { featureCollectionTemplate, symbolLayer, polygonLayer } from './MapboxHelpers';
+import { featureCollectionTemplate, symbolLayer, polygonLayer, savedPolygonLayer } from './MapboxHelpers';
 import { isochroneQuery } from '../../apiCalls/Isochrone';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoiandhc21lciIsImEiOiJjbGNwbjFiNjI3bnBiM3FwOWFyYnZyNmRtIn0.dy0DAO9j8qhnJ-df-xb1Yw'
 
-export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon, profile, time, count }) {
+export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon, profile, time, count, saveData }) {
   const [coordinates, setCoordinates] = useState(0)
   const [marker, setMarker] = useState(null)
 
@@ -77,7 +77,7 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
         data.foreign.saveKey = count
         data.foreign.lngLat = lngLat
         data.foreign.time = time
-        data.foreign.hidden = false
+        data.foreign.visibility = true
 
         layer.data = data
 
@@ -102,6 +102,34 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
         })
     }
   }, [coordinates])
+
+  // useEffect(() => {
+  //   if (!map.current || !saveData || !saveData.length ) return;
+
+  //   const addSavedIsochrones = () => {
+  //     saveData.forEach(element => {
+  //       const savedMarker = mapboxgl.Marker()
+    
+  //       savedMarker.setLngLat([element.foreign.lng, element.foreign.lat]).addTo(map.current)
+  //       setMarker(savedMarker)
+  //     })
+      
+  //     console.log('thing', featureCollectionTemplate.saveData = saveData)
+  //     return featureCollectionTemplate.saveData = saveData
+  //   }
+
+  //   map.current.on('data', () => {
+  //     if (saveData && map.current.getSource('saved')) {
+  //       map.current.removeLayer('saved')
+  //       map.current.getSource('saved').setData(addSavedIsochrones())      
+  //       map.current.addLayer(savedPolygonLayer)
+  //     }
+  //     else {
+  //       map.current.addSource('saved', addSavedIsochrones())
+  //       map.addLayer(savedPolygonLayer)
+  //     }
+  //   })
+  // }, [saveData])
 
   return (
     <>
