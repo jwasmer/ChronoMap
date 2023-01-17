@@ -43,6 +43,17 @@ export const polygonLayer = {
   }
 }
 
+export const savedPolygonLayer = {
+  'id': 'click',
+  'type': 'fill',
+  'source': 'click',
+  'layout': {},
+  'paint': {
+    'fill-color': '#0080ff',
+    'fill-opacity': 0.5
+  }
+}
+
 export const buildFeature = (featureTemplate, coordinates) => {
   const coordinateArray = [coordinates.lat, coordinates.lng]
   const feature = featureTemplate
