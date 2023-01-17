@@ -31,24 +31,6 @@ export default function VisibilityToggle({ save, setSaveData }) {
       })
     }
   }, [checked])
-
-
-  // useEffect(() => {
-  //   saveData.forEach((data, index) => {
-  //     if (data.foreign.saveKey = saveKey) {
-  //       setSaveData((prevData) => {
-  //         let arr = [...prevData]
-  //         const dataCopy = prevData[index]
-
-  //         dataCopy.foreign.visibility = checked
-
-  //         arr.splice(index, 1, dataCopy)
-
-  //         return arr
-  //       })
-  //     }
-  //   })
-  // }, [checked])
   
   return (
     <>
@@ -56,6 +38,8 @@ export default function VisibilityToggle({ save, setSaveData }) {
         checked={checked}
         onChange={handleChange}
         inputProps={{ 'aria-label': 'controlled' }}
+        checkedIcon={<Visibility />}
+        icon={<VisibilityOff sx={{color: 'secondary.dark'}} />}
       />
     </>
   )
