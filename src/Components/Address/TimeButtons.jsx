@@ -36,6 +36,7 @@ export default function TimeButtons({ save, setSaveData }) {
     <>
       <FormControl>
         <RadioGroup
+          data-cy="time-radio"
           row
           value={value}
           name="time-selection-buttons"
@@ -48,6 +49,7 @@ export default function TimeButtons({ save, setSaveData }) {
           }}
         >
           <FormControlLabel 
+            data-cy="15m"
             value={15}
             sx={{m: "0"}}
             control={
@@ -59,6 +61,7 @@ export default function TimeButtons({ save, setSaveData }) {
             } 
           />
           <FormControlLabel 
+            data-cy="30m"
             value={30}
             sx={{m: "0"}}
             control={
@@ -70,6 +73,7 @@ export default function TimeButtons({ save, setSaveData }) {
             } 
           />          
           <FormControlLabel 
+            data-cy="45m"
             value={45}
             sx={{m: "0"}}
             control={
@@ -81,6 +85,7 @@ export default function TimeButtons({ save, setSaveData }) {
             } 
           />          
           <FormControlLabel 
+            data-cy="60m"
             value={60}
             sx={{m: "0"}}
             control={

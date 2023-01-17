@@ -28,6 +28,7 @@ export default function IconMenu({ setProfile }) {
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
         <Tooltip title="Transporation type">
         <IconButton
+          data-cy="icon-menu"
           className="menu"
           onClick={handleClick}
           size="small"
@@ -76,7 +77,9 @@ export default function IconMenu({ setProfile }) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={() => {
+        <MenuItem 
+          data-cy="walking-menu-item"
+          onClick={() => {
           setSelection(<DirectionsWalkIcon/>)
           setProfile("walking")
           }}>
@@ -85,7 +88,9 @@ export default function IconMenu({ setProfile }) {
           </ListItemIcon>
           <ListItemText>Walk</ListItemText>
         </MenuItem>
-        <MenuItem onClick={() => {
+        <MenuItem 
+          data-cy="cycling-menu-item"
+          onClick={() => {
           setSelection(<DirectionsBikeIcon/>)
           setProfile("cycling")
           }}>
@@ -94,7 +99,9 @@ export default function IconMenu({ setProfile }) {
           </ListItemIcon>
           <ListItemText>Bike</ListItemText>
         </MenuItem>
-        <MenuItem onClick={() => {
+        <MenuItem 
+          data-cy="driving-menu-item"
+          onClick={() => {
           setSelection(<DirectionsCarIcon/>)
           setProfile("driving")
           }}>

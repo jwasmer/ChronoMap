@@ -23,6 +23,7 @@ export default function DeleteButton({ save, setSaveData }) {
   return (
     <>
       <IconButton 
+        data-cy="delete"
         sx={{mr: "12px"}}
         onClick={() => {removeAddress(save)}}
       >

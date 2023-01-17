@@ -35,6 +35,7 @@ export default function VisibilityToggle({ save, setSaveData }) {
   return (
     <>
       <Switch 
+        data-cy="visibility"
         checked={checked}
         onChange={handleChange}
         inputProps={{ "aria-label": "controlled" }}

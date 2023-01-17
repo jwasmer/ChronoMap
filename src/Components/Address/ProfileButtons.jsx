@@ -37,6 +37,7 @@ export default function ProfileButtons({ save, setSaveData }) {
     <>
       <FormControl>
         <RadioGroup
+          data-cy="profile-radio"
           row
           value={value}
           name="profile-selection-buttons"
@@ -49,6 +50,7 @@ export default function ProfileButtons({ save, setSaveData }) {
           }}
         >
           <FormControlLabel 
+            data-cy="walking"
             value="walking" 
             sx={{m: "0"}}
             control={
@@ -60,6 +62,7 @@ export default function ProfileButtons({ save, setSaveData }) {
             } 
           />
           <FormControlLabel 
+            data-cy="cycling"
             value="cycling" 
             sx={{m: "0"}}
             control={
@@ -71,6 +74,7 @@ export default function ProfileButtons({ save, setSaveData }) {
             } 
           />
           <FormControlLabel 
+            data-cy="driving"
             value="driving" 
             sx={{m: "0"}}
             control={

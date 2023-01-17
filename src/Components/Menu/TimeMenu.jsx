@@ -10,7 +10,7 @@ import Tooltip from "@mui/material/Tooltip";
 
 export default function IconMenu({ setTime }) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [time, setTimeIcon] = useState("60m")
+  const [time, setTimeIcon] = useState(60)
   const open = Boolean(anchorEl)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -24,6 +24,7 @@ export default function IconMenu({ setTime }) {
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
         <Tooltip title="Travel time">
         <IconButton
+          data-cy="time-menu"
           className="menu"
           onClick={handleClick}
           size="small"
@@ -70,25 +71,33 @@ export default function IconMenu({ setTime }) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={() => {
+        <MenuItem 
+          data-cy="15m-menu-item"
+          onClick={() => {
           setTimeIcon("15m")
           setTime(15)
           }}>
-          <ListItemText>15 minutes</ListItemText>
+          <ListItemText >15 minutes</ListItemText>
         </MenuItem>
-        <MenuItem onClick={() => {
+        <MenuItem 
+          data-cy="30m-menu-item"
+          onClick={() => {
           setTimeIcon("30m")
           setTime(30)
           }}>
           <ListItemText>30 minutes</ListItemText>
         </MenuItem>
-        <MenuItem onClick={() => {
+        <MenuItem 
+          data-cy="45m-menu-item"
+          onClick={() => {
           setTimeIcon("45m")
           setTime(45)
           }}>
           <ListItemText>45 minutes</ListItemText>
         </MenuItem>
-        <MenuItem onClick={() => {
+        <MenuItem 
+          data-cy="60m-menu-item"
+          onClick={() => {
           setTimeIcon("60m")
           setTime(60)
           }}>

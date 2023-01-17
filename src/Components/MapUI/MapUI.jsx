@@ -47,6 +47,7 @@ export default function MapUI({ saveData, setSaveData }) {
       />
       <form className="searchbar">
         <input 
+          data-cy="search"
           background-color="white" 
           className="search-input" 
           type="text" name="searchbar" 
@@ -55,6 +56,7 @@ export default function MapUI({ saveData, setSaveData }) {
           onChange={event => setSearchInput(event.target.value)} 
         />
         <IconButton 
+          data-cy="submit-search"
           type="submit" 
           size="large" 
           color="primary" 
@@ -66,6 +68,7 @@ export default function MapUI({ saveData, setSaveData }) {
         </IconButton>
         <div className="divider"></div>
         <IconButton 
+          data-cy="save"
           id="favorite" 
           size="large" 
           color="primary" 
@@ -86,6 +89,7 @@ export default function MapUI({ saveData, setSaveData }) {
       />
       <div className="button-container">
         <Button 
+          data-cy="options-btn"
           variant="contained" 
           size="large"
           component={Link} to="/map/options/"

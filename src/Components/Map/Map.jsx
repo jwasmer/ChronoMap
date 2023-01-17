@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Map.css"
 import { featureCollectionTemplate, symbolLayer, polygonLayer, savedPolygonLayer } from "./MapboxHelpers";
 import { isochroneQuery } from "../../apiCalls/Isochrone";
-import { json } from "react-router-dom";
 
 mapboxgl.accessToken = "pk.eyJ1Ijoiandhc21lciIsImEiOiJjbGNwbjFiNjI3bnBiM3FwOWFyYnZyNmRtIn0.dy0DAO9j8qhnJ-df-xb1Yw"
 
@@ -53,6 +52,7 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
     if (searchGeoJson) {
         searchGeoJson
           .then((data) => {
+            console.log(JSON.stringify(data))
             setCoordinates({lng: data.features[0].center[0], lat: data.features[0].center[1]})
             setSearchGeoJson(null)
           })
@@ -107,7 +107,7 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
   }, [coordinates])
 
   useEffect(() => {
-    // map.current.on('load', () => {
+    console.log(map.current)
       if (!saveData.length) return
   
       mapId.forEach(id => {
@@ -146,7 +146,6 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
           return [...prevState, element.foreign.saveKey]
         })
       })
-    // })
   }, [saveData])
 
   return (

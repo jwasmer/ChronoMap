@@ -8,7 +8,7 @@ import VisibilityToggle from "./VisibilityToggle";
 export default function Address({ save, setSaveData }) {
 
   return (
-    <Paper className="paper" elevation={2} overflow="scroll">
+    <Paper data-cy="address-card" className="paper" elevation={2} overflow="scroll">
       <VisibilityToggle 
         save={ save }
         setSaveData={ setSaveData }

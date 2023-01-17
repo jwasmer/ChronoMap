@@ -1,5 +1,4 @@
 import "./Options.css"
-import { useState, useEffect } from "react"
 import { Button, Typography, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
 import Address from "../Address/Address";
@@ -23,7 +22,7 @@ export default function Options({ saveData, setSaveData }) {
       <div className="header">
         <Typography variant="h4">Options</Typography>
         <div className="button-container">
-          <Button variant="contained" size="large" component={Link} to="/map/">VIEW MAP</Button>
+          <Button data-cy="map-btn" variant="contained" size="large" component={Link} to="/map/">VIEW MAP</Button>
         </div>
       </div>
       {saveData.length ? renderAddresses(saveData) : 
@@ -31,7 +30,7 @@ export default function Options({ saveData, setSaveData }) {
         sx={{
           mt: "48px"
         }}>
-          <Typography variant="h5">No saved addresses.</Typography>
+          <Typography data-cy="error" variant="h5">No saved addresses.</Typography>
         </Paper>
       }
     </div>
