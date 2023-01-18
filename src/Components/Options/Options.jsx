@@ -1,7 +1,13 @@
+import PropTypes from "prop-types"
 import "./Options.css"
 import { Button, Typography, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
 import Address from "../Address/Address";
+
+Options.propTypes = {
+  saveData: PropTypes.array,
+  setSaveData: PropTypes.func.isRequired
+}
 
 export default function Options({ saveData, setSaveData }) {
 

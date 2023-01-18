@@ -1,6 +1,13 @@
+import PropTypes from "prop-types"
 import { IconButton } from "@mui/material"
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useState, useEffect } from "react";
+
+DeleteButton.propTypes = {
+  setSaveData: PropTypes.func.isRequired,
+  save: PropTypes.object.isRequired
+}
+
 
 export default function DeleteButton({ save, setSaveData }) {
 

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import "../MapUI/MapUI.css"
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
@@ -11,6 +12,10 @@ import Tooltip from "@mui/material/Tooltip";
 import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
 import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+
+IconMenu.propTypes = {
+  setProfile: PropTypes.func.isRequired
+}
 
 export default function IconMenu({ setProfile }) {
   const [anchorEl, setAnchorEl] = useState(null);

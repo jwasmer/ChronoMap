@@ -1,7 +1,14 @@
+import PropTypes from "prop-types"
 import { useState, useEffect } from "react";
 import { Radio, FormControl, RadioGroup, FormControlLabel, Avatar } from "@mui/material"
 import { DirectionsWalk, DirectionsBike, DirectionsCar } from "@mui/icons-material";
 import "../Options/Options.css"
+
+ProfileButtons.propTypes = {
+  setSaveData: PropTypes.func.isRequired,
+  save: PropTypes.object.isRequired
+}
+
 
 export default function ProfileButtons({ save, setSaveData }) {
   const [value, setValue] = useState(save.foreign.profile)

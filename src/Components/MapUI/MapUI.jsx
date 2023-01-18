@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React, { useState } from "react"
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -9,6 +10,10 @@ import IconButton from "@mui/material/IconButton";
 import { reverseGeocode, forwardGeocode, geocodeQuery } from "../../apiCalls/Geocode"
 import TimeMenu from "../Menu/TimeMenu.jsx"
 import IconMenu from "../Menu/IconMenu.jsx"
+
+MapUI.propTypes = {
+  saveData: PropTypes.array
+}
 
 export default function MapUI({ saveData, setSaveData }) {
   const [searchInput, setSearchInput] = useState("")

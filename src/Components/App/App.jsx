@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Route, Routes } from "react-router"
 import { BrowserRouter } from "react-router-dom";
+import Error from "../Error/Error";
 import "./App.css";
 import MapUI from "../MapUI/MapUI"
 import Options from "../Options/Options"
@@ -31,8 +32,9 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="/map/*" element={<MapUI saveData={ saveData } setSaveData={ setSaveData }/>} />
-          <Route path="/map/options/*" element={<Options saveData={ saveData } setSaveData={ setSaveData }/>} />
+          <Route path="/map/" element={<MapUI saveData={ saveData } setSaveData={ setSaveData }/>} />
+          <Route path="/map/options/" element={<Options saveData={ saveData } setSaveData={ setSaveData }/>} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

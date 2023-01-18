@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import "../MapUI/MapUI.css"
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
@@ -8,7 +9,11 @@ import ListItemText from "@mui/material/ListItemText";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 
-export default function IconMenu({ setTime }) {
+TimeMenu.propTypes = {
+  setTime: PropTypes.func.isRequired
+}
+
+export default function TimeMenu({ setTime }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [time, setTimeIcon] = useState(60)
   const open = Boolean(anchorEl)

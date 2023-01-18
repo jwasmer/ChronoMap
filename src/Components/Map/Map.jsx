@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import React, { useState, useEffect, useRef } from "react";
 import "./Map.css"
@@ -5,6 +6,16 @@ import { featureCollectionTemplate, symbolLayer, polygonLayer, savedPolygonLayer
 import { isochroneQuery } from "../../apiCalls/Isochrone";
 
 mapboxgl.accessToken = "pk.eyJ1Ijoiandhc21lciIsImEiOiJjbGNwbjFiNjI3bnBiM3FwOWFyYnZyNmRtIn0.dy0DAO9j8qhnJ-df-xb1Yw"
+
+Map.propTypes = {
+  searchGeoJson: PropTypes.object,
+  setSearchGeoJson: PropTypes.func.isRequired,
+  setCurrentPolygon: PropTypes.func.isRequired,
+  profile: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+  saveData: PropTypes.array
+}
 
 export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon, profile, time, count, saveData }) {
   const [coordinates, setCoordinates] = useState(0)
@@ -142,7 +153,6 @@ export default function Map({ searchGeoJson, setSearchGeoJson, setCurrentPolygon
         map.current.addLayer(savedPolygonLayer)
   
         setMapId((prevState) => {
-          console.log('added')
           return [...prevState, element.foreign.saveKey]
         })
       })
