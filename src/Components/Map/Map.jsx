@@ -12,7 +12,10 @@ Map.propTypes = {
   setSearchGeoJson: PropTypes.func.isRequired,
   setCurrentPolygon: PropTypes.func.isRequired,
   profile: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired,
+  time: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.number.isRequired,
+  ]),
   count: PropTypes.number.isRequired,
   saveData: PropTypes.array
 }
