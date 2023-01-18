@@ -1,6 +1,13 @@
+import PropTypes from "prop-types"
 import { useState, useEffect } from "react";
 import { Radio, FormControl, RadioGroup, FormControlLabel, Avatar } from "@mui/material"
 import "../Options/Options.css"
+
+TimeButtons.propTypes = {
+  setSaveData: PropTypes.func.isRequired,
+  save: PropTypes.object.isRequired
+}
+
 
 export default function TimeButtons({ save, setSaveData }) {
   const [value, setValue] = useState(save.foreign.time)

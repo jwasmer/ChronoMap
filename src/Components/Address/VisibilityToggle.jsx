@@ -1,6 +1,12 @@
+import PropTypes from "prop-types"
 import { useState, useEffect } from "react";
 import { Switch } from "@mui/material";
 import { VisibilityOff, Visibility } from "@mui/icons-material";
+
+VisibilityToggle.propTypes = {
+  setSaveData: PropTypes.func.isRequired,
+  save: PropTypes.object.isRequired
+}
 
 export default function VisibilityToggle({ save, setSaveData }) {
   const [checked, setChecked] = useState(save.foreign.visibility)

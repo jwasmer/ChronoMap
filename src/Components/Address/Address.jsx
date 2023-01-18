@@ -1,9 +1,15 @@
+import PropTypes from "prop-types"
 import { Typography, Paper } from "@mui/material"
 import Divider from "@mui/material/Divider";
 import ProfileButtons from "./ProfileButtons";
 import TimeButtons from "./TimeButtons";
 import DeleteButton from "./DeleteButton";
 import VisibilityToggle from "./VisibilityToggle";
+
+Address.propTypes = {
+  setSaveData: PropTypes.func.isRequired,
+  save: PropTypes.object.isRequired
+}
 
 export default function Address({ save, setSaveData }) {
 
