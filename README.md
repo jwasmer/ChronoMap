@@ -7,8 +7,7 @@ ChronoMap is an isochrone mapping tool made with Mapbox GL JS, the Mapbox Isochr
 1. Clone down [this repository]('https://github.com/jwasmer/ChronoMap')
 1. Run `npm install` in your terminal
 1. Run `npm start` in your terminal
-1. Open up http://localhost:3000/ in your browswer
-1. `control + c` in your terminal to stop server
+1. `control + c` in terminal to quit
 
 Deployed app coming soon!
 
