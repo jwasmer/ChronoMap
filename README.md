@@ -10,7 +10,7 @@ ChronoMap is an isochrone mapping tool made with Mapbox GL JS, the Mapbox Isochr
 1. Open up http://localhost:3000/ in your browswer
 1. `control + c` in your terminal to stop server
 
-To view deployed app, visit https://around-the-world-trivia.netlify.app/
+Deployed app coming soon!
 
 ## Project Goals
  * Build an interactive map-based app
