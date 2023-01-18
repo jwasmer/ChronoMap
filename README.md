@@ -21,6 +21,8 @@ Once you have an isochrone, you can save it to your favorites by clicking on the
 
 You can click the "View Saved" button in the top right to view your saved isochrones. From here, feel free to adjust the information used to generate that isochrone. If you have an isochrone showing travel time by car, for example, you can change it to show travel time by cycling or walking instead.
 
+![Guide](https://user-images.githubusercontent.com/110298370/213281788-e31d41ed-8d89-4e45-9717-95f1f430f9d1.jpg)
+
 ## Project Goals
  * Build an interactive map-based app
  * Gain experience using geoJSON data
